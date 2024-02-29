@@ -1,0 +1,81 @@
+﻿@model List<PerimeterModel>
+
+@{
+    ViewData["Title"] = "Perímetros";
+}
+
+<div class="text-center">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="fs-5 navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Lots" asp-action="Index">Lotes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Perimeter" asp-action="Index">Perímetro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Producers" asp-action="Index">Produtores</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <h1 class="display-4">Perímetros</h1>
+
+    <div>
+        <div class="text-start">
+            <a class="btn btn-primary" role="button" asp-area="" asp-controller="Perimeter" asp-action="FormAdd">Adicionar Perímetro</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Perímetro</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (PerimeterModel perimeter in Model)
+                    {
+                        <tr>
+                            <th scope="row">@perimeter.Id</th>
+                            <td>@perimeter.Name</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                                        Editar
+                                    </button>
+                                    <form class="dropdown-menu p-4" asp-controller="Perimeter" asp-action="UpdatePerimeter" method="post">
+                                        <div class="mb-3">
+                                            <label for="formGroupExampleInput" class="form-label">Nome do Perímetro</label>
+                                            <input type="text" asp-for="@perimeter.Name" class="form-control" id="formGroupExampleInput" placeholder="Ex: Califórnia, Ribeira.">
+                                        </div>
+                                        <div>
+                                            <input type="hidden" asp-for="@perimeter.Id" />
+                                            <button class="btn btn-primary" type="submit">Editar</button>
+                                            <a class="btn btn-danger" asp-route-id="@perimeter.Id" role="button" asp-area="" asp-controller="Perimeter" asp-action="FormAdd">Apagar</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

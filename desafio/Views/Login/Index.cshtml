@@ -1,0 +1,29 @@
+﻿@model UserModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="text-center mt-lg-5">
+    <h1 class="display-4">Login</h1>
+
+    <div class="text-start w-50">
+        @if (TempData["MessageError"] != null)
+        {
+            @TempData["MessageError"]
+        }
+        <form class="row g-3 needs-validation" asp-controller="Login" asp-action="LoginUser" method="post">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="email" asp-for="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Senha</label>
+                <input type="password" asp-for="Password" class="form-control" id="exampleInputPassword1">
+                <a class="text-primary" asp-area="" asp-controller="Register" asp-action="Index">Crie uma conta.</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+    </div>
+</div>
