@@ -65,7 +65,8 @@
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                                         Editar
                                     </button>
-                                    <form class="dropdown-menu p-4" asp-controller="Producers" asp-action="UpdateProducer" method="post">
+                                    @* Colocar classe para ter event prevent default *@
+                                    <form class="dropdown-menu p-4 formEnviar" asp-controller="Producers" asp-action="UpdateProducer" method="post">
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput" class="form-label">Nome do Produtor</label>
                                             <input type="text" asp-for="@producer.Name" class="form-control" id="formGroupExampleInput">
@@ -91,4 +92,4 @@
     </div>
 </div>
 
-<script src="~/js/update.js"></script>
+<script src="~/js/site.js"></script>

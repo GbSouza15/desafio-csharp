@@ -24,11 +24,14 @@ document.addEventListener("DOMContentLoaded", function () {
         var isValid = validarCPF(cpf);
         cpfInput.setAttribute('data-valid', isValid);
 
-        // Atualiza o valor do campo oculto
+        console.log(isValid)
+
         var dataValidField = document.getElementById('dataValid');
         if (dataValidField) {
             dataValidField.value = isValid ? 'true' : 'false';
         }
+
+        console.log(dataValidField)
 
         if (isValid) {
             console.log('CPF válido');
@@ -40,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function validarCPF(cpf) {
         cpf = cpf.replace(/[^\d]+/g, '');
         if (cpf == '') return false;
-        // Elimina CPFs invalidos conhecidos	
+        // Elimina CPFs invalidos conhecidos
         if (cpf.length != 11 ||
             cpf == "00000000000" ||
             cpf == "11111111111" ||
@@ -53,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
             cpf == "88888888888" ||
             cpf == "99999999999")
             return false;
-        // Valida 1o digito	
+        // Valida 1o digito
         add = 0;
         for (i = 0; i < 9; i++)
             add += parseInt(cpf.charAt(i)) * (10 - i);
@@ -62,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
             rev = 0;
         if (rev != parseInt(cpf.charAt(9)))
             return false;
-        // Valida 2o digito	
+        // Valida 2o digito
         add = 0;
         for (i = 0; i < 10; i++)
             add += parseInt(cpf.charAt(i)) * (11 - i);

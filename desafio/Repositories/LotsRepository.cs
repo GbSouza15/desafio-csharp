@@ -12,7 +12,6 @@ namespace desafio.Repositories
         {
             using (SqlConnection connection = SqlConnectionFactory.CreateConnection())
             {
-                // Verificar se o código do lote já existe
                 if (IsCodeInUse(connection, userId, lot.CodeLot))
                 {
                     throw new Exception("Já existe um lote cadastrado com esse código.");
