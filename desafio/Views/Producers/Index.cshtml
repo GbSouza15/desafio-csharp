@@ -39,7 +39,7 @@
             <a class="btn btn-primary" role="button" asp-area="" asp-controller="Producers" asp-action="FormAdd">Adicionar Produtor</a>
             @if (TempData["MessageError"] != null)
             {
-                <p>@TempData["MessageError"]</p>
+                <p class="text-danger my-2">@TempData["MessageError"]</p>
             }
         </div>
         <table class="table">
@@ -65,23 +65,22 @@
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                                         Editar
                                     </button>
-                                    @* Colocar classe para ter event prevent default *@
                                     <form class="dropdown-menu p-4 formEnviar" asp-controller="Producers" asp-action="UpdateProducer" method="post">
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput" class="form-label">Nome do Produtor</label>
-                                            <input type="text" asp-for="@producer.Name" class="form-control" id="formGroupExampleInput">
+                                            <input type="text" class="form-control" name="Name" value="@producer.Name">
                                         </div>
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput" class="form-label">CPF do Produtor</label>
-                                            <input type="text" asp-for="@producer.CPF" class="form-control cpfProdutorInput" maxlength="11" placeholder="Ex: 12345678912" data-valid="">
-                                            <input type="hidden" name="dataValid" id="dataValid" value="">
+                                            <input type="text" class="form-control cpfProdutorInput cpf-field" name="CPF" value="@producer.CPF" maxlength="11" placeholder="Ex: 12345678912" data-valid="">
+                                            <input type="hidden" class="dataValid" name="dataValid" value="true">
                                         </div>
                                         <div>
-                                            <input type="hidden" asp-for="@producer.Id" />
+                                            <input type="hidden" name="Id" value="@producer.Id" />
                                             <button class="btn btn-primary" type="submit">Editar</button>
-                                            <a class="btn btn-danger" asp-route-id="@producer.Id" role="button" asp-area="" asp-controller="Producers" asp-action="DeleteProducer">Apagar</a>
                                         </div>
                                     </form>
+
                                 </div>
                             </td>
                         </tr>
@@ -92,4 +91,4 @@
     </div>
 </div>
 
-<script src="~/js/site.js"></script>
+<script src="~/js/updateItem.js"></script>

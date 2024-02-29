@@ -39,7 +39,7 @@
             <a class="btn btn-primary" role="button" asp-area="" asp-controller="Lots" asp-action="FormAdd">Adicionar Lotes</a>
             @if (TempData["MessageError"] != null)
             {
-                <p>@TempData["MessageError"]</p>
+                <p class="text-danger my-2">@TempData["MessageError"]</p>
             }
         </div>
         <table class="table">
@@ -93,7 +93,6 @@
                                         <div>
                                             <input type="hidden" asp-for="@lots.Id" />
                                             <button class="btn btn-primary" type="submit">Editar</button>
-                                            <a class="btn btn-danger" asp-route-id="@lots.Id" role="button" asp-area="" asp-controller="Lots" asp-action="FormAdd">Apagar</a>
                                         </div>
                                     </form>
                                 </div>

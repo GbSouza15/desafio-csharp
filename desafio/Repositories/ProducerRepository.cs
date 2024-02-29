@@ -31,7 +31,6 @@ namespace desafio.Repositories
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Erro ao inserir no banco de dados: {ex.Message}");
                     throw new Exception($"Erro ao adicionar usuário. {ex.Message}");
                 }
 
@@ -70,7 +69,7 @@ namespace desafio.Repositories
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Erro ao listar produtores: {ex.Message}");
+                    throw new Exception($"Erro ao listar produtores. {ex.Message}");
                 }
 
                 return producers;
@@ -109,7 +108,6 @@ namespace desafio.Repositories
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Erro ao obter produtor por ID: {ex.Message}");
                     throw new Exception($"Erro obter produtor. {ex.Message}");
                 }
 
@@ -149,7 +147,6 @@ namespace desafio.Repositories
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"Produtor com ID {producerModel.Id} não encontrado.");
                         throw new Exception($"Erro ao atualizar produtor. {ex.Message}");
                     }
                 }

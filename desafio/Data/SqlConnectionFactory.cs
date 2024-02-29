@@ -7,7 +7,7 @@ namespace desafio.Data
     {
         public static SqlConnection CreateConnection()
         {
-            SqlConnection connection = new SqlConnection("<String de conexão aqui>");
+            SqlConnection connection = new SqlConnection("Server=Gabriel;Database=Teste;User Id=sa;Password=gabriel2004;");
 
             try
             {

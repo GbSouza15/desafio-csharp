@@ -4,28 +4,30 @@
     ViewData["Title"] = "Registro";
 }
 
-<div class="text-center mt-lg-5">
-    <h1 class="display-4">Registrar</h1>
+<div class="d-flex justify-content-center mt-lg-5">
+    <div>
+        <h1 class="display-4 text-center">Registrar</h1>
 
-    <div class="text-start w-50">
-        @if (TempData["MessageError"] != null)
-        {
-            @TempData["MessageError"]
-        }
-        <form class="row g-3 needs-validation" asp-controller="Register" asp-action="RegisterUser" method="post">
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Nome</label>
-                <input type="text" asp-for="Username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="email" asp-for="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Senha</label>
-                <input type="password" asp-for="Password" class="form-control" id="exampleInputPassword1">
-            </div>
-            <button type="submit" class="btn btn-primary">Criar</button>
-        </form>
+        <div class="text-start">
+            @if (TempData["MessageError"] != null)
+            {
+                <p class="text-danger my-2">@TempData["MessageError"]</p>
+            }
+            <form class="row g-3 needs-validation" asp-controller="Register" asp-action="RegisterUser" method="post">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Nome</label>
+                    <input type="text" asp-for="Username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email</label>
+                    <input type="email" asp-for="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Senha</label>
+                    <input type="password" asp-for="Password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <button type="submit" class="btn btn-primary">Criar</button>
+            </form>
+        </div>
     </div>
 </div>

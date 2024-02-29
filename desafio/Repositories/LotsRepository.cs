@@ -32,7 +32,6 @@ namespace desafio.Repositories
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Erro ao inserir no banco de dados: {ex.Message}");
                     throw new Exception($"Erro ao inserir no banco de dados: {ex.Message}");
                 }
 
@@ -80,7 +79,6 @@ namespace desafio.Repositories
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Erro ao obter o lote por Id: {ex.Message}");
                     throw new Exception($"Erro ao obter o lote por Id: {ex.Message}");
                 }
 
@@ -128,7 +126,6 @@ namespace desafio.Repositories
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Erro ao listar os lotes: {ex.Message}");
                     throw new Exception($"Erro ao listar os lotes: {ex.Message}");
                 }
                 return lots;
@@ -137,6 +134,12 @@ namespace desafio.Repositories
 
         private bool IsCodeInUse(SqlConnection connection, int userId, string codeLot)
         {
+
+            if (codeLot == null)
+            {
+                throw new Exception("Codigo do lote não informado.");
+            }
+
             string checkCodeQuery = "SELECT COUNT(*) FROM lote WHERE CodigoLote = @CodeLot AND Id_Usuario = @UserId";
 
             using (SqlCommand command = new SqlCommand(checkCodeQuery, connection))
@@ -155,6 +158,11 @@ namespace desafio.Repositories
                 if (IsCodeInUse(connection, userId, lots.CodeLot))
                 {
                     throw new Exception("Já existe um lote cadastrado com esse código.");
+                }
+
+                if (lots.IdPerimeter == 0 && lots.IdProducer == 0)
+                {
+                    throw new Exception("Verifique o nome do perímetro e produtor.");
                 }
 
                 LotsModel existingLots = GetLotbyId(userId, lots.Id);
@@ -188,7 +196,6 @@ namespace desafio.Repositories
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"Erro ao atualizar o lote: {ex.Message}");
                         throw new Exception($"Erro ao atualizar o lote: {ex.Message}");
                     }
                 }

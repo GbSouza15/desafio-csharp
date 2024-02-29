@@ -36,7 +36,6 @@ namespace desafio.Repositories
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Erro ao criar o usuário: {ex.Message}");
                     throw new Exception($"Erro ao criar o usuário: {ex.Message}");
                 }
 
@@ -79,7 +78,6 @@ namespace desafio.Repositories
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Erro ao obter usuário por credenciais: {ex.Message}");
                     throw new Exception($"Erro ao obter usuário por credenciais: {ex.Message}");
                 }
 
@@ -126,7 +124,6 @@ namespace desafio.Repositories
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Erro ao obter usuário por ID: {ex.Message}");
                     throw new Exception($"Erro ao obter usuário por ID: {ex.Message}");
                 }
 

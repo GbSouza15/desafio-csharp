@@ -37,7 +37,7 @@
         <form class="row g-3 needs-validation" asp-controller="Lots" asp-action="AddLots" method="post">
             @if (TempData["MessageError"] != null)
             {
-                @TempData["MessageError"]
+                <p class="text-danger my-2">@TempData["MessageError"]</p>
             }
             <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">Código do lote</label>

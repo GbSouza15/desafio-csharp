@@ -24,7 +24,7 @@ namespace desafio.Repositories
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Erro ao inserir no banco de dados: {ex.Message}");
+                    throw new Exception($"Erro ao adicionar perímetro. {ex.Message}");
                 }
 
                 return perimeter;
@@ -60,7 +60,7 @@ namespace desafio.Repositories
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Erro ao listar os perímetros: {ex.Message}");
+                    throw new Exception($"Erro ao listar perímetros. {ex.Message}");
                 }
                 
                 return perimeters;
@@ -97,7 +97,7 @@ namespace desafio.Repositories
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Erro ao obter perimetro por ID: {ex.Message}");
+                    throw new Exception($"Erro ao obter perímetro. {ex.Message}");
                 }
 
                 return perimeter;
@@ -127,7 +127,7 @@ namespace desafio.Repositories
                 }
                 else
                 {
-                    Console.WriteLine($"Produtor com ID {perimeter.Id} não encontrado.");
+                    throw new Exception($"Perímetro não encontrado.");
                 }
 
                 return existingPerimeter;
